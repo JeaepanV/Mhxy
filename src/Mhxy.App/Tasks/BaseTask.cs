@@ -1,130 +1,63 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Mhxy.App.Common;
-using Mhxy.App.Common.Enums;
-using Mhxy.App.Helpers;
+using Mhxy.Core;
 
 namespace Mhxy.App.Tasks
 {
-    public class BaseTask
+    public class BaseTask : Detector
     {
-        protected Dmsoft _dm;
-        protected string _taskName;
+        #region ========================    字段
 
-        private int _movingColorCount = 0;
+        private string _taskName;
+        private bool _isCompleted;
+        private bool _isReceivedTask;
+        private bool _isRunning;
+        private bool _isPaused;
 
-        private bool _isRunning = false;
-        private bool _isPaused = false;
-        private bool _isCompleted = false;
+        private int _movingColorCount;
 
-        protected Detector _detector;
+        #endregion
 
-        /// <summary>
-        /// 检测主界面
-        /// </summary>
-        private Feature _featureMainView = new Feature
+        #region ========================    属性
+
+        public string TaskName
         {
-            Mode = DetectMode.FindPic,
-            DetectRegion = new Region(208, 0, 645, 73),
-            PicName = "主界面_活动",
-        };
-
-        /// <summary>
-        /// 检测战斗中收缩
-        /// </summary>
-        private Feature _featureBattledHide = new Feature
+            get => _taskName;
+            set => _taskName = value;
+        }
+        public bool IsCompleted
         {
-            Mode = DetectMode.FindPic,
-            DetectRegion = new Region(8, 25, 50, 71),
-            PicName = "战斗中_收缩"
-        };
-
-        /// <summary>
-        /// 检测战斗中展开
-        /// </summary>
-        private Feature _featureBattledShow = new Feature
+            get => _isCompleted;
+            set => _isCompleted = value;
+        }
+        public bool IsReceivedTask
         {
-            Mode = DetectMode.FindPic,
-            DetectRegion = new Region(365, 30, 404, 69),
-            PicName = "战斗中_展开",
-            Clicked = true,
-            ClickRegion = new Region { Width = 15, Height = 15 }
-        };
-
-        /// <summary>
-        /// 检测任务栏
-        /// </summary>
-        private Feature _featureTaskbar = new Feature
+            get => _isReceivedTask;
+            set => _isReceivedTask = value;
+        }
+        public bool IsRunning
         {
-            Name = "界面_任务栏",
-            Mode = DetectMode.FindPic,
-            PicName = "界面_任务栏",
-            DetectRegion = new Region(803, 98, 865, 145)
-        };
-
-        /// <summary>
-        /// 检测队伍栏
-        /// </summary>
-        private Feature _featureTeambar = new Feature
+            get => _isRunning;
+            set => _isRunning = value;
+        }
+        public bool IsPaused
         {
-            Name = "界面_队伍栏",
-            Mode = DetectMode.FindPic,
-            PicName = "界面_队伍栏",
-            DetectRegion = new Region(918, 99, 1022, 146)
-        };
-
-        /// <summary>
-        /// 展开任务栏
-        /// </summary>
-        private Feature _featureExpandTaskbar = new Feature
-        {
-            Name = "界面_展开任务栏",
-            Mode = DetectMode.FindPic,
-            PicName = "界面_展开任务栏",
-            DetectRegion = new Region(968, 104, 1022, 153),
-            Clicked = true,
-            WaitTime = Rander.Instance.Next(1000, 2000),
-            ClickRegion = new Region { Width = 15, Height = 15 }
-        };
-
-        /// <summary>
-        /// NPC交互
-        /// </summary>
-        private Feature _featureNPCInteractive = new Feature
-        {
-            Name = "界面_NPC交互",
-            Mode = DetectMode.FindColorBlock,
-            DeltaColor = "EFD1A0-061022",
-            DetectRegion = new Region(798, 98, 987, 587),
-            Clicked = true,
-            WaitTime = Rander.Instance.Next(1000, 2000),
-            ClickRegion = new Region { Height = 40, Width = 160 },
-            ColorCount = 4800,
-            BlockWidth = 170,
-            BlockHeight = 40,
-        };
-
-        public BaseTask(Dmsoft dm)
-        {
-            _dm = dm;
-            _detector = new Detector(dm);
+            get => _isPaused;
+            set => _isPaused = value;
         }
 
-        protected void Log(
-            string info,
-            [CallerMemberName] string callerName = "",
-            [CallerFilePath] string fileName = "",
-            [CallerLineNumber] int line = 0
-        )
+        #endregion
+
+        public BaseTask(Dmsoft dm)
+            : base(dm)
         {
-            Logger.Instance.WriteDebug($"[{_taskName}] -> {info}", callerName, fileName, line);
+            IsDebug = true;
         }
 
         public void Start()
         {
             _isRunning = true;
-
             while (_isRunning)
             {
                 if (IsBattled())
@@ -149,7 +82,7 @@ namespace Mhxy.App.Tasks
 
         public void Stop()
         {
-            _isRunning = false;
+            _isRunning = true;
         }
 
         public void Pause()
@@ -162,83 +95,20 @@ namespace Mhxy.App.Tasks
             _isPaused = false;
         }
 
-        /// <summary>
-        /// 检测队伍栏
-        /// </summary>
-        /// <returns></returns>
-        protected bool IsTaskbar()
-        {
-            var result = _detector.Bulid(_featureTaskbar);
-            return result;
-        }
+        #region ========================    基本
 
-        /// <summary>
-        /// 切换任务栏
-        /// </summary>
-        protected void SwitchTaskbar()
-        {
-            ExpandTaskbar();
-            if (!IsTaskbar())
-            {
-                _detector.ClickRect(_featureTaskbar.DetectRegion);
-            }
-        }
-
-        /// <summary>
-        /// 检测队伍栏
-        /// </summary>
-        /// <returns></returns>
-        protected bool IsTeambar()
-        {
-            var result = _detector.Bulid(_featureTeambar);
-            return result;
-        }
-
-        /// <summary>
-        /// 切换队伍栏
-        /// </summary>
-        protected void SwitchTeambar()
-        {
-            ExpandTaskbar();
-            if (!IsTeambar())
-            {
-                _detector.ClickRect(_featureTeambar.DetectRegion);
-            }
-        }
-
-        /// <summary>
-        /// 展开任务栏
-        /// </summary>
-        /// <returns></returns>
-        protected bool ExpandTaskbar()
-        {
-            var result = _detector.Bulid(_featureExpandTaskbar);
-            return result;
-        }
-
-        /// <summary>
-        /// NPC交互
-        /// </summary>
-        /// <returns></returns>
-        protected bool NPCInteractive()
-        {
-            var result = _detector.Bulid(_featureNPCInteractive);
-            return result;
-        }
-
-        #region ========================    基本方法
-        public void Delay(int time)
+        public override Detector Delay(int time)
         {
             while (_isPaused)
             {
                 Thread.Sleep(1);
             }
-            Thread.Sleep(time);
+            return base.Delay(time);
         }
 
         public void DelayShort()
         {
-            Delay(Rander.Instance.Next(500, 1500));
+            Delay(Rander.Instance.Next(750, 1500));
         }
 
         public void DelayLong()
@@ -246,15 +116,15 @@ namespace Mhxy.App.Tasks
             Delay(Rander.Instance.Next(1500, 3000));
         }
 
-        protected void KeyPressEsc()
+        public void KeyPressEsc()
         {
             _dm.KeyPress(27);
         }
 
-        protected void KeyPressAndAlt(int key)
+        public void KeyPressAndAlt(int keycode)
         {
             _dm.KeyDown(18);
-            _dm.KeyPress(key);
+            _dm.KeyPress(keycode);
             _dm.KeyUp(18);
         }
 
@@ -273,38 +143,39 @@ namespace Mhxy.App.Tasks
             return false;
         }
 
-        #endregion========================    基本方法
+        protected void Log(
+            string info,
+            [CallerMemberName] string callerName = "",
+            [CallerFilePath] string fileName = "",
+            [CallerLineNumber] int line = 0
+        )
+        {
+            Logger.Instance.WriteDebug($"[{_taskName}] -> {info}", callerName, fileName, line);
+        }
+        #endregion
 
-        #region ========================    检测界面
-
+        #region ========================    检测
         /// <summary>
         /// 检测主界面
         /// </summary>
-        /// <returns></returns>
-        protected bool IsMainView()
+        public bool IsMainView()
         {
-            var result = _detector.Bulid(_featureMainView);
-            return result;
+            return Bulid(FeatureLibrary.Instance.Dict["界面_活动"]);
         }
 
         /// <summary>
         /// 检测战斗中
         /// </summary>
-        /// <returns></returns>
-        protected bool IsBattled()
+        public bool IsBattled()
         {
-            var result = _detector.Bulid(_featureBattledHide);
-            if (result)
-                return true;
-            result = _detector.Bulid(_featureBattledShow);
-            return result;
+            return Bulid(FeatureLibrary.Instance.Dict["战斗_收缩"])
+                || Bulid(FeatureLibrary.Instance.Dict["战斗_展开"]);
         }
 
         /// <summary>
         /// 检测移动中
         /// </summary>
-        /// <returns></returns>
-        protected bool IsMoving()
+        public bool IsMoving()
         {
             var result = _dm.GetColorNum(114, 52, 193, 71, "C0B4A3-2D2C2C", 0.9);
             if (_movingColorCount == 0)
@@ -316,9 +187,45 @@ namespace Mhxy.App.Tasks
             return moving;
         }
 
+        /// <summary>
+        /// 检测包裹界面
+        /// </summary>
+        public bool IsPackView()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_包裹"]);
+        }
+
+        /// <summary>
+        /// 检测队伍界面
+        /// </summary>
+        public bool IsTeamView()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_队伍"]);
+        }
+
+        protected bool IsTaskbar()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_任务栏"]);
+        }
+
+        protected bool SwitchTaskbar()
+        {
+            if (IsMainView())
+            {
+                ExpandTaskbar();
+                DelayLong();
+                if (!IsTaskbar())
+                {
+                    ClickRegion(FeatureLibrary.Instance.Dict["界面_任务栏"].ScanRegion);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         #endregion
 
-        #region ========================    界面入口
+        #region ========================    入口
 
         protected virtual void OnMainView(
             [CallerMemberName] string callerName = "",
@@ -345,6 +252,10 @@ namespace Mhxy.App.Tasks
         )
         {
             Log($"移动中", callerName, fileName, line);
+            if (!_isReceivedTask)
+            {
+                ClickRect(400, 230, 609, 439);
+            }
         }
 
         protected virtual void OnOther(
@@ -355,7 +266,106 @@ namespace Mhxy.App.Tasks
         {
             Log($"未知界面", callerName, fileName, line);
         }
+        #endregion
 
+        #region ========================    必备
+
+        public virtual bool ClickTask()
+        {
+            Log($"点击{TaskName}任务");
+            return false;
+        }
+
+        public virtual bool ReceiveTask()
+        {
+            Log($"领取{TaskName}任务");
+            return false;
+        }
+
+        protected bool ExpandTaskbar()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_展开任务栏"]);
+        }
+
+        /// <summary>
+        /// 打开队伍界面
+        /// </summary>
+        /// <returns></returns>
+        protected bool OpenTeamView()
+        {
+            while (!IsTeamView())
+            {
+                KeyPressEsc();
+                DelayShort();
+                KeyPressAndAlt(84);
+                DelayLong();
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 打开包裹界面
+        /// </summary>
+        /// <returns></returns>
+        protected bool OpenPackView()
+        {
+            while (!IsPackView())
+            {
+                KeyPressEsc();
+                DelayShort();
+                KeyPressAndAlt(69);
+                DelayLong();
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 打开指引界面
+        /// </summary>
+        /// <returns></returns>
+        protected bool OpenGuideView()
+        {
+            KeyPressEsc();
+            DelayShort();
+            KeyPressAndAlt(72);
+            return true;
+        }
+
+        /// <summary>
+        /// 打开秘籍界面
+        /// </summary>
+        /// <returns></returns>
+        protected bool OpenSecretView()
+        {
+            OpenGuideView();
+            DelayLong();
+            ClickRect(948, 460, 973, 531);
+            return true;
+        }
+
+        protected bool OpenDoubleExpView()
+        {
+            KeyPressAndAlt(71);
+            return true;
+        }
+
+        /// <summary>
+        /// 是否队长
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsTeamLeader()
+        {
+            return !Bulid(FeatureLibrary.Instance.Dict["队伍_暂离"]);
+        }
+
+        /// <summary>
+        /// NPC交互
+        /// </summary>
+        /// <returns></returns>
+        protected bool NPCInteractive()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_NPC交互"]);
+        }
         #endregion
     }
 }

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mhxy.App", "Mhxy.App\Mhxy.App.csproj", "{DA324E1D-68B2-4F95-9B4A-16E5D6C1A0C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mhxy.Core", "Mhxy.Core\Mhxy.Core.csproj", "{43911877-7717-4AE5-9DB7-B154C3E448C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA324E1D-68B2-4F95-9B4A-16E5D6C1A0C4}.Debug|x86.ActiveCfg = Debug|x86
+		{DA324E1D-68B2-4F95-9B4A-16E5D6C1A0C4}.Debug|x86.Build.0 = Debug|x86
+		{DA324E1D-68B2-4F95-9B4A-16E5D6C1A0C4}.Release|x86.ActiveCfg = Release|x86
+		{DA324E1D-68B2-4F95-9B4A-16E5D6C1A0C4}.Release|x86.Build.0 = Release|x86
+		{43911877-7717-4AE5-9DB7-B154C3E448C5}.Debug|x86.ActiveCfg = Debug|x86
+		{43911877-7717-4AE5-9DB7-B154C3E448C5}.Debug|x86.Build.0 = Debug|x86
+		{43911877-7717-4AE5-9DB7-B154C3E448C5}.Release|x86.ActiveCfg = Release|x86
+		{43911877-7717-4AE5-9DB7-B154C3E448C5}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCF809F6-AE5F-401E-BCB9-08DAAC5608FA}
+	EndGlobalSection
+EndGlobal

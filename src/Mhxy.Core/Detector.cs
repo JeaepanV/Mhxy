@@ -1,13 +1,13 @@
 ﻿using System.IO;
-using System.Threading;
-using Mhxy.App.Common;
-using Mhxy.App.Common.Enums;
+using Mhxy.Core.Common;
+using Mhxy.Core.Common.Enums;
 
-namespace Mhxy.App.Tasks;
+namespace Mhxy.Core;
 
 public class Detector
 {
-    private Dmsoft _dmsoft;
+    private bool _isDebug = false;
+    protected Dmsoft _dm;
     private Feature _feature;
     private int _scanX;
     private int _scanY;
@@ -23,10 +23,24 @@ public class Detector
         set => _scanY = value;
     }
 
-    public Detector(Dmsoft dmsoft)
+    private List<Point> _points;
+
+    public List<Point> Points
     {
-        _dmsoft = dmsoft;
-        _feature = new Feature();
+        get { return _points; }
+        set { _points = value; }
+    }
+
+    public bool IsDebug
+    {
+        get => _isDebug;
+        set => _isDebug = value;
+    }
+
+    public Detector(Dmsoft dm)
+    {
+        _dm = dm;
+        Reset();
     }
 
     public Detector Reset()
@@ -34,24 +48,25 @@ public class Detector
         _feature = new Feature();
         _scanX = -1;
         _scanY = -1;
+        _points = null;
         return this;
     }
 
-    public Detector Mode(DetectMode mode)
+    public Detector Mode(ScanMode mode)
     {
         _feature.Mode = mode;
         return this;
     }
 
-    public Detector DetectRegion(int l, int t, int r, int b)
+    public Detector ScanRegion(int l, int t, int r, int b)
     {
-        _feature.DetectRegion = new Region(l, t, r, b);
+        _feature.ScanRegion = new Region(l, t, r, b);
         return this;
     }
 
-    public Detector DetectRegion(Region region)
+    public Detector ScanRegion(Region region)
     {
-        _feature.DetectRegion = region;
+        _feature.ScanRegion = region;
         return this;
     }
 
@@ -139,17 +154,29 @@ public class Detector
             return false;
 
         var result = false;
-        var region = _feature.DetectRegion;
+        var region = _feature.ScanRegion;
         int l = (int)region.Left;
         int t = (int)region.Top;
         int r = (int)region.Right;
         int b = (int)region.Bottom;
 
-        if (_feature.Mode == DetectMode.FindPic)
+        if (_feature.Mode == ScanMode.FindPic)
         {
             result = FindPic(l, t, r, b, _feature.PicName, _feature.DeltaColor, _feature.Threshold);
         }
-        else if (_feature.Mode == DetectMode.FindMultiColor)
+        else if (_feature.Mode == ScanMode.FindPicEx)
+        {
+            result = FindPicEx(
+                l,
+                t,
+                r,
+                b,
+                _feature.PicName,
+                _feature.DeltaColor,
+                _feature.Threshold
+            );
+        }
+        else if (_feature.Mode == ScanMode.FindMultiColor)
         {
             result = FindMultiColor(
                 l,
@@ -161,7 +188,7 @@ public class Detector
                 _feature.Threshold
             );
         }
-        else if (_feature.Mode == DetectMode.FindColorBlock)
+        else if (_feature.Mode == ScanMode.FindColorBlock)
         {
             result = FindColorBlock(
                 l,
@@ -178,7 +205,7 @@ public class Detector
             //    $"{result}, {l}, {t}, {r}, {b}, {_feature.DeltaColor}, {_feature.ColorCount}, {_feature.BlockWidth}, {_feature.BlockHeight}"
             //);
         }
-        else if (_feature.Mode == DetectMode.FindStr)
+        else if (_feature.Mode == ScanMode.FindStr)
         {
             result = FindStr(
                 l,
@@ -189,6 +216,11 @@ public class Detector
                 _feature.DeltaColor,
                 _feature.Threshold
             );
+        }
+
+        if (IsDebug)
+        {
+            Logger.Instance.WriteDebug($"{_feature.Name}: {result}, {_scanX}, {_scanY}");
         }
 
         if (result)
@@ -229,7 +261,7 @@ public class Detector
             name += ".bmp";
         }
 
-        var result = _dmsoft.FindPic(
+        var result = _dm.FindPic(
             l,
             t,
             r,
@@ -248,6 +280,44 @@ public class Detector
         return false;
     }
 
+    public bool FindPicEx(
+        int l,
+        int t,
+        int r,
+        int b,
+        string name,
+        string deltaColor,
+        double threshold
+    )
+    {
+        if (string.IsNullOrEmpty(Path.GetExtension(name)))
+        {
+            name += ".bmp";
+        }
+
+        var result = _dm.FindPicEx(l, t, r, b, name, deltaColor, threshold, 0);
+        if (string.IsNullOrEmpty(result))
+        {
+            return false;
+        }
+
+        var datas = result.Split("|");
+        _points = new();
+        for (int i = 0; i < datas.Length; i++)
+        {
+            var item = datas[i].Split(",");
+            _points.Add(
+                new Point(
+                    Convert.ToInt32(item[0]),
+                    Convert.ToInt32(item[1]),
+                    Convert.ToInt32(item[2])
+                )
+            );
+        }
+
+        return true;
+    }
+
     public bool FindMultiColor(
         int l,
         int t,
@@ -258,7 +328,7 @@ public class Detector
         double threshold
     )
     {
-        var result = _dmsoft.FindMultiColor(
+        var result = _dm.FindMultiColor(
             l,
             t,
             r,
@@ -289,7 +359,7 @@ public class Detector
         double threshold
     )
     {
-        var result = _dmsoft.FindColorBlock(
+        var result = _dm.FindColorBlock(
             l,
             t,
             r,
@@ -319,17 +389,7 @@ public class Detector
         double threshold
     )
     {
-        var result = _dmsoft.FindStr(
-            l,
-            t,
-            r,
-            b,
-            value,
-            deltaColor,
-            threshold,
-            out _scanX,
-            out _scanY
-        );
+        var result = _dm.FindStr(l, t, r, b, value, deltaColor, threshold, out _scanX, out _scanY);
         if (result > -1)
         {
             return true;
@@ -339,15 +399,15 @@ public class Detector
 
     public Detector Click(int x, int y)
     {
-        _dmsoft.MoveTo(x, y);
-        _dmsoft.LeftClick();
+        _dm.MoveTo(x, y);
+        _dm.LeftClick();
         return this;
     }
 
     public Detector ClickRect(int l, int t, int r, int b)
     {
-        _dmsoft.MoveTo(Rander.Instance.Next(l, r), Rander.Instance.Next(t, b));
-        _dmsoft.LeftClick();
+        _dm.MoveTo(Rander.Instance.Next(l, r), Rander.Instance.Next(t, b));
+        _dm.LeftClick();
         return this;
     }
 
@@ -383,7 +443,7 @@ public class Detector
         return this;
     }
 
-    public Detector Delay(int time)
+    public virtual Detector Delay(int time)
     {
         Thread.Sleep(time);
         return this;

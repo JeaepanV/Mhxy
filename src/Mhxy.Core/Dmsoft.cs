@@ -1,8 +1,7 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Mhxy.App;
+namespace Mhxy.Core;
 
 public class Dmsoft
 {
@@ -44,13 +43,7 @@ public class Dmsoft
         args[0] = index;
         args[1] = dict_info;
 
-        result = obj.InvokeMember(
-            "AddDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("AddDict", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -78,13 +71,7 @@ public class Dmsoft
         object result;
         args[0] = asm_ins;
 
-        result = obj.InvokeMember(
-            "AsmAdd",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("AsmAdd", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -95,13 +82,7 @@ public class Dmsoft
         args[0] = hwnd;
         args[1] = mode;
 
-        result = obj.InvokeMember(
-            "AsmCall",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("AsmCall", BindingFlags.InvokeMethod, null, obj_object, args);
         return Convert.ToInt64(result);
     }
 
@@ -113,26 +94,14 @@ public class Dmsoft
         args[1] = mode;
         args[2] = base_addr;
 
-        result = obj.InvokeMember(
-            "AsmCallEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("AsmCallEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return Convert.ToInt64(result);
     }
 
     public int AsmClear()
     {
         object result;
-        result = obj.InvokeMember(
-            "AsmClear",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("AsmClear", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -143,13 +112,7 @@ public class Dmsoft
         args[0] = base_addr;
         args[1] = is_64bit;
 
-        result = obj.InvokeMember(
-            "Assemble",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Assemble", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -160,13 +123,7 @@ public class Dmsoft
         args[0] = fre;
         args[1] = delay;
 
-        result = obj.InvokeMember(
-            "Beep",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Beep", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -176,23 +133,11 @@ public class Dmsoft
         object result;
         args[0] = bgr_color;
 
-        result = obj.InvokeMember(
-            "BGR2RGB",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("BGR2RGB", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public int BindWindow(
-        int hwnd,
-        string display,
-        string mouse,
-        string keypad,
-        int mode
-    )
+    public int BindWindow(int hwnd, string display, string mouse, string keypad, int mode)
     {
         object[] args = new object[5];
         object result;
@@ -202,13 +147,7 @@ public class Dmsoft
         args[3] = keypad;
         args[4] = mode;
 
-        result = obj.InvokeMember(
-            "BindWindow",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("BindWindow", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -250,25 +189,11 @@ public class Dmsoft
         args[3] = y2;
         args[4] = file_name;
 
-        result = obj.InvokeMember(
-            "Capture",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Capture", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
-    public int CaptureGif(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string file_name,
-        int delay,
-        int time
-    )
+    public int CaptureGif(int x1, int y1, int x2, int y2, string file_name, int delay, int time)
     {
         object[] args = new object[7];
         object result;
@@ -280,24 +205,11 @@ public class Dmsoft
         args[5] = delay;
         args[6] = time;
 
-        result = obj.InvokeMember(
-            "CaptureGif",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("CaptureGif", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
-    public int CaptureJpg(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string file_name,
-        int quality
-    )
+    public int CaptureJpg(int x1, int y1, int x2, int y2, string file_name, int quality)
     {
         object[] args = new object[6];
         object result;
@@ -308,13 +220,7 @@ public class Dmsoft
         args[4] = file_name;
         args[5] = quality;
 
-        result = obj.InvokeMember(
-            "CaptureJpg",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("CaptureJpg", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -328,13 +234,7 @@ public class Dmsoft
         args[3] = y2;
         args[4] = file_name;
 
-        result = obj.InvokeMember(
-            "CapturePng",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("CapturePng", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -344,13 +244,7 @@ public class Dmsoft
         object result;
         args[0] = file_name;
 
-        result = obj.InvokeMember(
-            "CapturePre",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("CapturePre", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -387,13 +281,7 @@ public class Dmsoft
     public int CheckUAC()
     {
         object result;
-        result = obj.InvokeMember(
-            "CheckUAC",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("CheckUAC", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -403,13 +291,7 @@ public class Dmsoft
         object result;
         args[0] = index;
 
-        result = obj.InvokeMember(
-            "ClearDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ClearDict", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -422,13 +304,7 @@ public class Dmsoft
         args[2] = color;
         args[3] = sim;
 
-        result = obj.InvokeMember(
-            "CmpColor",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("CmpColor", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -440,13 +316,7 @@ public class Dmsoft
         args[1] = dst_file;
         args[2] = over;
 
-        result = obj.InvokeMember(
-            "CopyFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("CopyFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -534,15 +404,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int CreateFoobarRoundRect(
-        int hwnd,
-        int x,
-        int y,
-        int w,
-        int h,
-        int rw,
-        int rh
-    )
+    public int CreateFoobarRoundRect(int hwnd, int x, int y, int w, int h, int rw, int rh)
     {
         object[] args = new object[7];
         object result;
@@ -571,13 +433,7 @@ public class Dmsoft
         args[0] = file_name;
         args[1] = pwd;
 
-        result = obj.InvokeMember(
-            "DecodeFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DecodeFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -587,13 +443,7 @@ public class Dmsoft
         object result;
         args[0] = mis;
 
-        result = obj.InvokeMember(
-            "delay",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("delay", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -604,13 +454,7 @@ public class Dmsoft
         args[0] = min_s;
         args[1] = max_s;
 
-        result = obj.InvokeMember(
-            "Delays",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Delays", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -621,13 +465,7 @@ public class Dmsoft
         args[0] = index;
         args[1] = name;
 
-        result = obj.InvokeMember(
-            "DelEnv",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DelEnv", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -637,13 +475,7 @@ public class Dmsoft
         object result;
         args[0] = file_name;
 
-        result = obj.InvokeMember(
-            "DeleteFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DeleteFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -671,22 +503,11 @@ public class Dmsoft
         args[1] = key;
         args[2] = file_name;
 
-        result = obj.InvokeMember(
-            "DeleteIni",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DeleteIni", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
-    public int DeleteIniPwd(
-        string section,
-        string key,
-        string file_name,
-        string pwd
-    )
+    public int DeleteIniPwd(string section, string key, string file_name, string pwd)
     {
         object[] args = new object[4];
         object result;
@@ -765,13 +586,7 @@ public class Dmsoft
         args[1] = base_addr;
         args[2] = is_64bit;
 
-        result = obj.InvokeMember(
-            "DisAssemble",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DisAssemble", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -782,13 +597,7 @@ public class Dmsoft
         args[0] = en;
         args[1] = tpe;
 
-        result = obj.InvokeMember(
-            "DmGuard",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DmGuard", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -814,13 +623,7 @@ public class Dmsoft
         object result;
         args[0] = rate;
 
-        result = obj.InvokeMember(
-            "DownCpu",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("DownCpu", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -848,13 +651,7 @@ public class Dmsoft
         object result;
         args[0] = en;
 
-        result = obj.InvokeMember(
-            "EnableBind",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("EnableBind", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -925,13 +722,7 @@ public class Dmsoft
         object result;
         args[0] = en;
 
-        result = obj.InvokeMember(
-            "EnableIme",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("EnableIme", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -1122,26 +913,14 @@ public class Dmsoft
         args[0] = file_name;
         args[1] = pwd;
 
-        result = obj.InvokeMember(
-            "EncodeFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("EncodeFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public int EnterCri()
     {
         object result;
-        result = obj.InvokeMember(
-            "EnterCri",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("EnterCri", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -1152,13 +931,7 @@ public class Dmsoft
         args[0] = section;
         args[1] = file_name;
 
-        result = obj.InvokeMember(
-            "EnumIniKey",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("EnumIniKey", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1219,22 +992,11 @@ public class Dmsoft
         object result;
         args[0] = name;
 
-        result = obj.InvokeMember(
-            "EnumProcess",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("EnumProcess", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public string EnumWindow(
-        int parent,
-        string title,
-        string class_name,
-        int filter
-    )
+    public string EnumWindow(int parent, string title, string class_name, int filter)
     {
         object[] args = new object[4];
         object result;
@@ -1243,13 +1005,7 @@ public class Dmsoft
         args[2] = class_name;
         args[3] = filter;
 
-        result = obj.InvokeMember(
-            "EnumWindow",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("EnumWindow", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1277,12 +1033,7 @@ public class Dmsoft
         return result.ToString();
     }
 
-    public string EnumWindowByProcessId(
-        int pid,
-        string title,
-        string class_name,
-        int filter
-    )
+    public string EnumWindowByProcessId(int pid, string title, string class_name, int filter)
     {
         object[] args = new object[4];
         object result;
@@ -1331,14 +1082,7 @@ public class Dmsoft
         return result.ToString();
     }
 
-    public string ExcludePos(
-        string all_pos,
-        int tpe,
-        int x1,
-        int y1,
-        int x2,
-        int y2
-    )
+    public string ExcludePos(string all_pos, int tpe, int x1, int y1, int x2, int y2)
     {
         object[] args = new object[6];
         object result;
@@ -1349,13 +1093,7 @@ public class Dmsoft
         args[4] = x2;
         args[5] = y2;
 
-        result = obj.InvokeMember(
-            "ExcludePos",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ExcludePos", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1366,13 +1104,7 @@ public class Dmsoft
         args[0] = cmd;
         args[1] = current_dir;
 
-        result = obj.InvokeMember(
-            "ExecuteCmd",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ExecuteCmd", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1382,38 +1114,18 @@ public class Dmsoft
         object result;
         args[0] = tpe;
 
-        result = obj.InvokeMember(
-            "ExitOs",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ExitOs", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public int FaqCancel()
     {
         object result;
-        result = obj.InvokeMember(
-            "FaqCancel",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("FaqCancel", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
-    public int FaqCapture(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        int quality,
-        int delay,
-        int time
-    )
+    public int FaqCapture(int x1, int y1, int x2, int y2, int quality, int delay, int time)
     {
         object[] args = new object[7];
         object result;
@@ -1425,24 +1137,11 @@ public class Dmsoft
         args[5] = delay;
         args[6] = time;
 
-        result = obj.InvokeMember(
-            "FaqCapture",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FaqCapture", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
-    public int FaqCaptureFromFile(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string file_name,
-        int quality
-    )
+    public int FaqCaptureFromFile(int x1, int y1, int x2, int y2, string file_name, int quality)
     {
         object[] args = new object[6];
         object result;
@@ -1482,13 +1181,7 @@ public class Dmsoft
     public string FaqFetch()
     {
         object result;
-        result = obj.InvokeMember(
-            "FaqFetch",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("FaqFetch", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -1498,26 +1191,14 @@ public class Dmsoft
         object result;
         args[0] = handle;
 
-        result = obj.InvokeMember(
-            "FaqGetSize",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FaqGetSize", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public int FaqIsPosted()
     {
         object result;
-        result = obj.InvokeMember(
-            "FaqIsPosted",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("FaqIsPosted", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -1530,13 +1211,7 @@ public class Dmsoft
         args[2] = request_type;
         args[3] = time_out;
 
-        result = obj.InvokeMember(
-            "FaqPost",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FaqPost", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -1546,13 +1221,7 @@ public class Dmsoft
         object result;
         args[0] = handle;
 
-        result = obj.InvokeMember(
-            "FaqRelease",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FaqRelease", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -1565,24 +1234,11 @@ public class Dmsoft
         args[2] = request_type;
         args[3] = time_out;
 
-        result = obj.InvokeMember(
-            "FaqSend",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FaqSend", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public string FetchWord(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string color,
-        string word
-    )
+    public string FetchWord(int x1, int y1, int x2, int y2, string color, string word)
     {
         object[] args = new object[6];
         object result;
@@ -1593,13 +1249,7 @@ public class Dmsoft
         args[4] = color;
         args[5] = word;
 
-        result = obj.InvokeMember(
-            "FetchWord",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FetchWord", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1727,15 +1377,7 @@ public class Dmsoft
         return result.ToString();
     }
 
-    public string FindColorE(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string color,
-        double sim,
-        int dir
-    )
+    public string FindColorE(int x1, int y1, int x2, int y2, string color, double sim, int dir)
     {
         object[] args = new object[7];
         object result;
@@ -1747,25 +1389,11 @@ public class Dmsoft
         args[5] = sim;
         args[6] = dir;
 
-        result = obj.InvokeMember(
-            "FindColorE",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindColorE", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public string FindColorEx(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string color,
-        double sim,
-        int dir
-    )
+    public string FindColorEx(int x1, int y1, int x2, int y2, string color, double sim, int dir)
     {
         object[] args = new object[7];
         object result;
@@ -1777,13 +1405,7 @@ public class Dmsoft
         args[5] = sim;
         args[6] = dir;
 
-        result = obj.InvokeMember(
-            "FindColorEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindColorEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1795,13 +1417,7 @@ public class Dmsoft
         args[1] = addr_range;
         args[2] = data;
 
-        result = obj.InvokeMember(
-            "FindData",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindData", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1823,13 +1439,7 @@ public class Dmsoft
         args[4] = multi_thread;
         args[5] = mode;
 
-        result = obj.InvokeMember(
-            "FindDataEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindDataEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1847,13 +1457,7 @@ public class Dmsoft
         args[2] = double_value_min;
         args[3] = double_value_max;
 
-        result = obj.InvokeMember(
-            "FindDouble",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindDouble", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1901,13 +1505,7 @@ public class Dmsoft
         args[2] = float_value_min;
         args[3] = float_value_max;
 
-        result = obj.InvokeMember(
-            "FindFloat",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindFloat", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1931,13 +1529,7 @@ public class Dmsoft
         args[5] = multi_thread;
         args[6] = mode;
 
-        result = obj.InvokeMember(
-            "FindFloatEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindFloatEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -1973,13 +1565,7 @@ public class Dmsoft
         args[3] = int_value_max;
         args[4] = tpe;
 
-        result = obj.InvokeMember(
-            "FindInt",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindInt", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2005,24 +1591,11 @@ public class Dmsoft
         args[6] = multi_thread;
         args[7] = mode;
 
-        result = obj.InvokeMember(
-            "FindIntEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindIntEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public int FindMulColor(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string color,
-        double sim
-    )
+    public int FindMulColor(int x1, int y1, int x2, int y2, string color, double sim)
     {
         object[] args = new object[6];
         object result;
@@ -2238,13 +1811,7 @@ public class Dmsoft
         args[6] = sim;
         args[7] = dir;
 
-        result = obj.InvokeMember(
-            "FindPicE",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindPicE", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2270,13 +1837,7 @@ public class Dmsoft
         args[6] = sim;
         args[7] = dir;
 
-        result = obj.InvokeMember(
-            "FindPicEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindPicEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2302,13 +1863,7 @@ public class Dmsoft
         args[6] = sim;
         args[7] = dir;
 
-        result = obj.InvokeMember(
-            "FindPicExS",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindPicExS", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2379,13 +1934,7 @@ public class Dmsoft
         args[6] = sim;
         args[7] = dir;
 
-        result = obj.InvokeMember(
-            "FindPicMemE",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindPicMemE", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2529,13 +2078,7 @@ public class Dmsoft
         args[5] = sim;
         args[6] = dir;
 
-        result = obj.InvokeMember(
-            "FindShapeE",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindShapeE", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2559,13 +2102,7 @@ public class Dmsoft
         args[5] = sim;
         args[6] = dir;
 
-        result = obj.InvokeMember(
-            "FindShapeEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindShapeEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2612,15 +2149,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public string FindStrE(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string str,
-        string color,
-        double sim
-    )
+    public string FindStrE(int x1, int y1, int x2, int y2, string str, string color, double sim)
     {
         object[] args = new object[7];
         object result;
@@ -2632,25 +2161,11 @@ public class Dmsoft
         args[5] = color;
         args[6] = sim;
 
-        result = obj.InvokeMember(
-            "FindStrE",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindStrE", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public string FindStrEx(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string str,
-        string color,
-        double sim
-    )
+    public string FindStrEx(int x1, int y1, int x2, int y2, string str, string color, double sim)
     {
         object[] args = new object[7];
         object result;
@@ -2662,25 +2177,11 @@ public class Dmsoft
         args[5] = color;
         args[6] = sim;
 
-        result = obj.InvokeMember(
-            "FindStrEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindStrEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public string FindStrExS(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string str,
-        string color,
-        double sim
-    )
+    public string FindStrExS(int x1, int y1, int x2, int y2, string str, string color, double sim)
     {
         object[] args = new object[7];
         object result;
@@ -2692,13 +2193,7 @@ public class Dmsoft
         args[5] = color;
         args[6] = sim;
 
-        result = obj.InvokeMember(
-            "FindStrExS",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindStrExS", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -2745,15 +2240,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public string FindStrFastE(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string str,
-        string color,
-        double sim
-    )
+    public string FindStrFastE(int x1, int y1, int x2, int y2, string str, string color, double sim)
     {
         object[] args = new object[7];
         object result;
@@ -2878,12 +2365,7 @@ public class Dmsoft
         return result.ToString();
     }
 
-    public string FindString(
-        int hwnd,
-        string addr_range,
-        string string_value,
-        int tpe
-    )
+    public string FindString(int hwnd, string addr_range, string string_value, int tpe)
     {
         object[] args = new object[4];
         object result;
@@ -2892,13 +2374,7 @@ public class Dmsoft
         args[2] = string_value;
         args[3] = tpe;
 
-        result = obj.InvokeMember(
-            "FindString",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindString", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -3103,21 +2579,11 @@ public class Dmsoft
         args[0] = class_name;
         args[1] = title_name;
 
-        result = obj.InvokeMember(
-            "FindWindow",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FindWindow", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
-    public int FindWindowByProcess(
-        string process_name,
-        string class_name,
-        string title_name
-    )
+    public int FindWindowByProcess(string process_name, string class_name, string title_name)
     {
         object[] args = new object[3];
         object result;
@@ -3135,11 +2601,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int FindWindowByProcessId(
-        int process_id,
-        string class_name,
-        string title_name
-    )
+    public int FindWindowByProcessId(int process_id, string class_name, string title_name)
     {
         object[] args = new object[3];
         object result;
@@ -3209,13 +2671,7 @@ public class Dmsoft
         object result;
         args[0] = float_value;
 
-        result = obj.InvokeMember(
-            "FloatToData",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FloatToData", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -3241,13 +2697,7 @@ public class Dmsoft
         object result;
         args[0] = hwnd;
 
-        result = obj.InvokeMember(
-            "FoobarClose",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FoobarClose", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -3335,14 +2785,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int FoobarFillRect(
-        int hwnd,
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        string color
-    )
+    public int FoobarFillRect(int hwnd, int x1, int y1, int x2, int y2, string color)
     {
         object[] args = new object[6];
         object result;
@@ -3369,13 +2812,7 @@ public class Dmsoft
         object result;
         args[0] = hwnd;
 
-        result = obj.InvokeMember(
-            "FoobarLock",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FoobarLock", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -3454,14 +2891,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int FoobarStartGif(
-        int hwnd,
-        int x,
-        int y,
-        string pic_name,
-        int repeat_limit,
-        int delay
-    )
+    public int FoobarStartGif(int hwnd, int x, int y, string pic_name, int repeat_limit, int delay)
     {
         object[] args = new object[6];
         object result;
@@ -3609,13 +3039,7 @@ public class Dmsoft
         object result;
         args[0] = pic_name;
 
-        result = obj.InvokeMember(
-            "FreePic",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("FreePic", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -3660,13 +3084,7 @@ public class Dmsoft
         args[2] = x2;
         args[3] = y2;
 
-        result = obj.InvokeMember(
-            "GetAveHSV",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetAveHSV", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -3679,26 +3097,14 @@ public class Dmsoft
         args[2] = x2;
         args[3] = y2;
 
-        result = obj.InvokeMember(
-            "GetAveRGB",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetAveRGB", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
     public string GetBasePath()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetBasePath",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetBasePath", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -3715,13 +3121,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int GetClientRect(
-        int hwnd,
-        out int x1,
-        out int y1,
-        out int x2,
-        out int y2
-    )
+    public int GetClientRect(int hwnd, out int x1, out int y1, out int x2, out int y2)
     {
         object[] args = new object[5];
         object result;
@@ -3799,13 +3199,7 @@ public class Dmsoft
         args[0] = x;
         args[1] = y;
 
-        result = obj.InvokeMember(
-            "GetColor",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetColor", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -3816,13 +3210,7 @@ public class Dmsoft
         args[0] = x;
         args[1] = y;
 
-        result = obj.InvokeMember(
-            "GetColorBGR",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetColorBGR", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -3833,13 +3221,7 @@ public class Dmsoft
         args[0] = x;
         args[1] = y;
 
-        result = obj.InvokeMember(
-            "GetColorHSV",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetColorHSV", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -3854,13 +3236,7 @@ public class Dmsoft
         args[4] = color;
         args[5] = sim;
 
-        result = obj.InvokeMember(
-            "GetColorNum",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetColorNum", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -3883,13 +3259,7 @@ public class Dmsoft
     public int GetCpuType()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetCpuType",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetCpuType", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -3967,13 +3337,7 @@ public class Dmsoft
         args[0] = index;
         args[1] = font_index;
 
-        result = obj.InvokeMember(
-            "GetDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetDict", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -4002,13 +3366,7 @@ public class Dmsoft
         args[2] = font_size;
         args[3] = flag;
 
-        result = obj.InvokeMember(
-            "GetDictInfo",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetDictInfo", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -4018,13 +3376,7 @@ public class Dmsoft
         object result;
         args[0] = tpe;
 
-        result = obj.InvokeMember(
-            "GetDir",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetDir", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -4057,26 +3409,14 @@ public class Dmsoft
     public int GetDmCount()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetDmCount",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetDmCount", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int GetDPI()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetDPI",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetDPI", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -4087,13 +3427,7 @@ public class Dmsoft
         args[0] = index;
         args[1] = name;
 
-        result = obj.InvokeMember(
-            "GetEnv",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetEnv", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -4142,26 +3476,14 @@ public class Dmsoft
     public int GetFps()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetFps",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetFps", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int GetID()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetID",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetID", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -4171,13 +3493,7 @@ public class Dmsoft
         object result;
         args[0] = vk;
 
-        result = obj.InvokeMember(
-            "GetKeyState",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetKeyState", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -4197,26 +3513,14 @@ public class Dmsoft
     public int GetLocale()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetLocale",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetLocale", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public string GetMac()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetMac",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetMac", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -4292,13 +3596,7 @@ public class Dmsoft
     public string GetNetTime()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetNetTime",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetNetTime", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -4334,13 +3632,7 @@ public class Dmsoft
     public int GetNowDict()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetNowDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetNowDict", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -4360,26 +3652,14 @@ public class Dmsoft
     public int GetOsType()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetOsType",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetOsType", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public string GetPath()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetPath",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetPath", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -4389,13 +3669,7 @@ public class Dmsoft
         object result;
         args[0] = pic_name;
 
-        result = obj.InvokeMember(
-            "GetPicSize",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetPicSize", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -4513,14 +3787,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int GetScreenDataBmp(
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        out int data,
-        out int size
-    )
+    public int GetScreenDataBmp(int x1, int y1, int x2, int y2, out int data, out int size)
     {
         object[] args = new object[6];
         object result;
@@ -4608,13 +3875,7 @@ public class Dmsoft
     public int GetTime()
     {
         object result;
-        result = obj.InvokeMember(
-            "GetTime",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("GetTime", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -4625,13 +3886,7 @@ public class Dmsoft
         args[0] = hwnd;
         args[1] = flag;
 
-        result = obj.InvokeMember(
-            "GetWindow",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetWindow", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -4683,13 +3938,7 @@ public class Dmsoft
         return result.ToString();
     }
 
-    public int GetWindowRect(
-        int hwnd,
-        out int x1,
-        out int y1,
-        out int x2,
-        out int y2
-    )
+    public int GetWindowRect(int hwnd, out int x1, out int y1, out int x2, out int y2)
     {
         object[] args = new object[5];
         object result;
@@ -4825,13 +4074,7 @@ public class Dmsoft
         args[4] = color;
         args[5] = sim;
 
-        result = obj.InvokeMember(
-            "GetWords",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("GetWords", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -4861,13 +4104,7 @@ public class Dmsoft
         object result;
         args[0] = rate;
 
-        result = obj.InvokeMember(
-            "HackSpeed",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("HackSpeed", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -4878,26 +4115,14 @@ public class Dmsoft
         args[0] = pic_name;
         args[1] = bmp_name;
 
-        result = obj.InvokeMember(
-            "ImageToBmp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ImageToBmp", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public int InitCri()
     {
         object result;
-        result = obj.InvokeMember(
-            "InitCri",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("InitCri", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -4924,26 +4149,14 @@ public class Dmsoft
         args[0] = int_value;
         args[1] = tpe;
 
-        result = obj.InvokeMember(
-            "IntToData",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("IntToData", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
     public int Is64Bit()
     {
         object result;
-        result = obj.InvokeMember(
-            "Is64Bit",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("Is64Bit", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -4953,13 +4166,7 @@ public class Dmsoft
         object result;
         args[0] = hwnd;
 
-        result = obj.InvokeMember(
-            "IsBind",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("IsBind", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -4989,13 +4196,7 @@ public class Dmsoft
         object result;
         args[0] = file_name;
 
-        result = obj.InvokeMember(
-            "IsFileExist",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("IsFileExist", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5021,13 +4222,7 @@ public class Dmsoft
         object result;
         args[0] = vk;
 
-        result = obj.InvokeMember(
-            "KeyDown",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("KeyDown", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5037,13 +4232,7 @@ public class Dmsoft
         object result;
         args[0] = key_str;
 
-        result = obj.InvokeMember(
-            "KeyDownChar",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("KeyDownChar", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5053,13 +4242,7 @@ public class Dmsoft
         object result;
         args[0] = vk;
 
-        result = obj.InvokeMember(
-            "KeyPress",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("KeyPress", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5086,13 +4269,7 @@ public class Dmsoft
         args[0] = key_str;
         args[1] = delay;
 
-        result = obj.InvokeMember(
-            "KeyPressStr",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("KeyPressStr", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5102,13 +4279,7 @@ public class Dmsoft
         object result;
         args[0] = vk;
 
-        result = obj.InvokeMember(
-            "KeyUp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("KeyUp", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5118,39 +4289,21 @@ public class Dmsoft
         object result;
         args[0] = key_str;
 
-        result = obj.InvokeMember(
-            "KeyUpChar",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("KeyUpChar", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public int LeaveCri()
     {
         object result;
-        result = obj.InvokeMember(
-            "LeaveCri",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("LeaveCri", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int LeftClick()
     {
         object result;
-        result = obj.InvokeMember(
-            "LeftClick",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("LeftClick", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -5170,26 +4323,14 @@ public class Dmsoft
     public int LeftDown()
     {
         object result;
-        result = obj.InvokeMember(
-            "LeftDown",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("LeftDown", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int LeftUp()
     {
         object result;
-        result = obj.InvokeMember(
-            "LeftUp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("LeftUp", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -5199,13 +4340,7 @@ public class Dmsoft
         object result;
         args[0] = pic_name;
 
-        result = obj.InvokeMember(
-            "LoadPic",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("LoadPic", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5217,13 +4352,7 @@ public class Dmsoft
         args[1] = size;
         args[2] = name;
 
-        result = obj.InvokeMember(
-            "LoadPicByte",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("LoadPicByte", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5233,13 +4362,7 @@ public class Dmsoft
         object result;
         args[0] = locks;
 
-        result = obj.InvokeMember(
-            "LockDisplay",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("LockDisplay", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5249,13 +4372,7 @@ public class Dmsoft
         object result;
         args[0] = locks;
 
-        result = obj.InvokeMember(
-            "LockInput",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("LockInput", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5284,13 +4401,7 @@ public class Dmsoft
         object result;
         args[0] = info;
 
-        result = obj.InvokeMember(
-            "Log",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Log", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5316,52 +4427,28 @@ public class Dmsoft
         object result;
         args[0] = str;
 
-        result = obj.InvokeMember(
-            "Md5",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Md5", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
     public int MiddleClick()
     {
         object result;
-        result = obj.InvokeMember(
-            "MiddleClick",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("MiddleClick", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int MiddleDown()
     {
         object result;
-        result = obj.InvokeMember(
-            "MiddleDown",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("MiddleDown", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int MiddleUp()
     {
         object result;
-        result = obj.InvokeMember(
-            "MiddleUp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("MiddleUp", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -5372,13 +4459,7 @@ public class Dmsoft
         args[0] = dx;
         args[1] = dy;
 
-        result = obj.InvokeMember(
-            "MoveDD",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("MoveDD", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5389,13 +4470,7 @@ public class Dmsoft
         args[0] = src_file;
         args[1] = dst_file;
 
-        result = obj.InvokeMember(
-            "MoveFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("MoveFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5406,13 +4481,7 @@ public class Dmsoft
         args[0] = rx;
         args[1] = ry;
 
-        result = obj.InvokeMember(
-            "MoveR",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("MoveR", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5423,13 +4492,7 @@ public class Dmsoft
         args[0] = x;
         args[1] = y;
 
-        result = obj.InvokeMember(
-            "MoveTo",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("MoveTo", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5442,13 +4505,7 @@ public class Dmsoft
         args[2] = w;
         args[3] = h;
 
-        result = obj.InvokeMember(
-            "MoveToEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("MoveToEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5460,13 +4517,7 @@ public class Dmsoft
         args[1] = x;
         args[2] = y;
 
-        result = obj.InvokeMember(
-            "MoveWindow",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("MoveWindow", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5481,13 +4532,7 @@ public class Dmsoft
         args[4] = color;
         args[5] = sim;
 
-        result = obj.InvokeMember(
-            "Ocr",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Ocr", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5502,13 +4547,7 @@ public class Dmsoft
         args[4] = color;
         args[5] = sim;
 
-        result = obj.InvokeMember(
-            "OcrEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("OcrEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5523,13 +4562,7 @@ public class Dmsoft
         args[4] = color;
         args[5] = sim;
 
-        result = obj.InvokeMember(
-            "OcrExOne",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("OcrExOne", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5553,13 +4586,7 @@ public class Dmsoft
         args[5] = color;
         args[6] = sim;
 
-        result = obj.InvokeMember(
-            "OcrInFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("OcrInFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5569,13 +4596,7 @@ public class Dmsoft
         object result;
         args[0] = pid;
 
-        result = obj.InvokeMember(
-            "OpenProcess",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("OpenProcess", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5585,13 +4606,7 @@ public class Dmsoft
         object result;
         args[0] = file_name;
 
-        result = obj.InvokeMember(
-            "Play",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Play", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5603,13 +4618,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = length;
 
-        result = obj.InvokeMember(
-            "ReadData",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadData", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5674,13 +4683,7 @@ public class Dmsoft
         args[0] = hwnd;
         args[1] = addr;
 
-        result = obj.InvokeMember(
-            "ReadDouble",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadDouble", BindingFlags.InvokeMethod, null, obj_object, args);
         return (double)result;
     }
 
@@ -5707,13 +4710,7 @@ public class Dmsoft
         object result;
         args[0] = file_name;
 
-        result = obj.InvokeMember(
-            "ReadFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5742,13 +4739,7 @@ public class Dmsoft
         args[0] = hwnd;
         args[1] = addr;
 
-        result = obj.InvokeMember(
-            "ReadFloat",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadFloat", BindingFlags.InvokeMethod, null, obj_object, args);
         return (float)result;
     }
 
@@ -5777,22 +4768,11 @@ public class Dmsoft
         args[1] = key;
         args[2] = file_name;
 
-        result = obj.InvokeMember(
-            "ReadIni",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadIni", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
-    public string ReadIniPwd(
-        string section,
-        string key,
-        string file_name,
-        string pwd
-    )
+    public string ReadIniPwd(string section, string key, string file_name, string pwd)
     {
         object[] args = new object[4];
         object result;
@@ -5801,13 +4781,7 @@ public class Dmsoft
         args[2] = file_name;
         args[3] = pwd;
 
-        result = obj.InvokeMember(
-            "ReadIniPwd",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadIniPwd", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5819,13 +4793,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = tpe;
 
-        result = obj.InvokeMember(
-            "ReadInt",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadInt", BindingFlags.InvokeMethod, null, obj_object, args);
         return Convert.ToInt64(result);
     }
 
@@ -5837,13 +4805,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = tpe;
 
-        result = obj.InvokeMember(
-            "ReadIntAddr",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadIntAddr", BindingFlags.InvokeMethod, null, obj_object, args);
         return Convert.ToInt64(result);
     }
 
@@ -5856,13 +4818,7 @@ public class Dmsoft
         args[2] = tpe;
         args[3] = length;
 
-        result = obj.InvokeMember(
-            "ReadString",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ReadString", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
@@ -5892,13 +4848,7 @@ public class Dmsoft
         args[0] = code;
         args[1] = Ver;
 
-        result = obj.InvokeMember(
-            "Reg",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Reg", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5910,13 +4860,7 @@ public class Dmsoft
         args[1] = Ver;
         args[2] = ip;
 
-        result = obj.InvokeMember(
-            "RegEx",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("RegEx", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5928,13 +4872,7 @@ public class Dmsoft
         args[1] = Ver;
         args[2] = ip;
 
-        result = obj.InvokeMember(
-            "RegExNoMac",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("RegExNoMac", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5945,13 +4883,7 @@ public class Dmsoft
         args[0] = code;
         args[1] = Ver;
 
-        result = obj.InvokeMember(
-            "RegNoMac",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("RegNoMac", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -5968,13 +4900,7 @@ public class Dmsoft
     public int ReleaseRef()
     {
         object result;
-        result = obj.InvokeMember(
-            "ReleaseRef",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("ReleaseRef", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -5984,52 +4910,28 @@ public class Dmsoft
         object result;
         args[0] = rgb_color;
 
-        result = obj.InvokeMember(
-            "RGB2BGR",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("RGB2BGR", BindingFlags.InvokeMethod, null, obj_object, args);
         return result.ToString();
     }
 
     public int RightClick()
     {
         object result;
-        result = obj.InvokeMember(
-            "RightClick",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("RightClick", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int RightDown()
     {
         object result;
-        result = obj.InvokeMember(
-            "RightDown",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("RightDown", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int RightUp()
     {
         object result;
-        result = obj.InvokeMember(
-            "RightUp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("RightUp", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -6040,13 +4942,7 @@ public class Dmsoft
         args[0] = path;
         args[1] = mode;
 
-        result = obj.InvokeMember(
-            "RunApp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("RunApp", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6057,13 +4953,7 @@ public class Dmsoft
         args[0] = index;
         args[1] = file_name;
 
-        result = obj.InvokeMember(
-            "SaveDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SaveDict", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6083,13 +4973,7 @@ public class Dmsoft
     public string SelectFile()
     {
         object result;
-        result = obj.InvokeMember(
-            "SelectFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("SelectFile", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -6099,13 +4983,7 @@ public class Dmsoft
         object result;
         args[0] = cmd;
 
-        result = obj.InvokeMember(
-            "SendCommand",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SendCommand", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6115,13 +4993,7 @@ public class Dmsoft
         object result;
         args[0] = hwnd;
 
-        result = obj.InvokeMember(
-            "SendPaste",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SendPaste", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6132,13 +5004,7 @@ public class Dmsoft
         args[0] = hwnd;
         args[1] = str;
 
-        result = obj.InvokeMember(
-            "SendString",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SendString", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6149,13 +5015,7 @@ public class Dmsoft
         args[0] = hwnd;
         args[1] = str;
 
-        result = obj.InvokeMember(
-            "SendString2",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SendString2", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6199,13 +5059,7 @@ public class Dmsoft
         object result;
         args[0] = en;
 
-        result = obj.InvokeMember(
-            "SetAero",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetAero", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6266,13 +5120,7 @@ public class Dmsoft
         args[0] = index;
         args[1] = dict_name;
 
-        result = obj.InvokeMember(
-            "SetDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetDict", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6284,13 +5132,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = size;
 
-        result = obj.InvokeMember(
-            "SetDictMem",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetDictMem", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6300,13 +5142,7 @@ public class Dmsoft
         object result;
         args[0] = pwd;
 
-        result = obj.InvokeMember(
-            "SetDictPwd",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetDictPwd", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6398,13 +5234,7 @@ public class Dmsoft
         args[1] = name;
         args[2] = value;
 
-        result = obj.InvokeMember(
-            "SetEnv",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetEnv", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6414,13 +5244,7 @@ public class Dmsoft
         object result;
         args[0] = exact_ocr;
 
-        result = obj.InvokeMember(
-            "SetExactOcr",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetExactOcr", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6494,13 +5318,7 @@ public class Dmsoft
     public int SetLocale()
     {
         object result;
-        result = obj.InvokeMember(
-            "SetLocale",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("SetLocale", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -6620,13 +5438,7 @@ public class Dmsoft
         object result;
         args[0] = path;
 
-        result = obj.InvokeMember(
-            "SetPath",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetPath", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6636,13 +5448,7 @@ public class Dmsoft
         object result;
         args[0] = pwd;
 
-        result = obj.InvokeMember(
-            "SetPicPwd",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetPicPwd", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6670,13 +5476,7 @@ public class Dmsoft
         args[1] = height;
         args[2] = depth;
 
-        result = obj.InvokeMember(
-            "SetScreen",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetScreen", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6702,13 +5502,7 @@ public class Dmsoft
         object result;
         args[0] = mode;
 
-        result = obj.InvokeMember(
-            "SetSimMode",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetSimMode", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6718,13 +5512,7 @@ public class Dmsoft
         object result;
         args[0] = uac;
 
-        result = obj.InvokeMember(
-            "SetUAC",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetUAC", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6803,13 +5591,7 @@ public class Dmsoft
         object result;
         args[0] = word_gap;
 
-        result = obj.InvokeMember(
-            "SetWordGap",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("SetWordGap", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6872,13 +5654,7 @@ public class Dmsoft
         args[4] = msg;
         args[5] = color;
 
-        result = obj.InvokeMember(
-            "ShowScrMsg",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("ShowScrMsg", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6923,13 +5699,7 @@ public class Dmsoft
         object result;
         args[0] = id;
 
-        result = obj.InvokeMember(
-            "Stop",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("Stop", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -6957,13 +5727,7 @@ public class Dmsoft
         args[0] = s;
         args[1] = str;
 
-        result = obj.InvokeMember(
-            "StrStr",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("StrStr", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7031,26 +5795,14 @@ public class Dmsoft
         object result;
         args[0] = index;
 
-        result = obj.InvokeMember(
-            "UseDict",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("UseDict", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public string Ver()
     {
         object result;
-        result = obj.InvokeMember(
-            "Ver",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("Ver", BindingFlags.InvokeMethod, null, obj_object, null);
         return result.ToString();
     }
 
@@ -7090,13 +5842,7 @@ public class Dmsoft
         return (int)result;
     }
 
-    public int VirtualProtectEx(
-        int hwnd,
-        long addr,
-        int size,
-        int tpe,
-        int old_protect
-    )
+    public int VirtualProtectEx(int hwnd, long addr, int size, int tpe, int old_protect)
     {
         object[] args = new object[5];
         object result;
@@ -7141,39 +5887,21 @@ public class Dmsoft
         args[0] = key_code;
         args[1] = time_out;
 
-        result = obj.InvokeMember(
-            "WaitKey",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WaitKey", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
     public int WheelDown()
     {
         object result;
-        result = obj.InvokeMember(
-            "WheelDown",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("WheelDown", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
     public int WheelUp()
     {
         object result;
-        result = obj.InvokeMember(
-            "WheelUp",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            null
-        );
+        result = obj.InvokeMember("WheelUp", BindingFlags.InvokeMethod, null, obj_object, null);
         return (int)result;
     }
 
@@ -7185,13 +5913,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = data;
 
-        result = obj.InvokeMember(
-            "WriteData",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteData", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7259,13 +5981,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = v;
 
-        result = obj.InvokeMember(
-            "WriteDouble",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteDouble", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7294,13 +6010,7 @@ public class Dmsoft
         args[0] = file_name;
         args[1] = content;
 
-        result = obj.InvokeMember(
-            "WriteFile",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteFile", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7312,13 +6022,7 @@ public class Dmsoft
         args[1] = addr;
         args[2] = v;
 
-        result = obj.InvokeMember(
-            "WriteFloat",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteFloat", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7349,23 +6053,11 @@ public class Dmsoft
         args[2] = v;
         args[3] = file_name;
 
-        result = obj.InvokeMember(
-            "WriteIni",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteIni", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
-    public int WriteIniPwd(
-        string section,
-        string key,
-        string v,
-        string file_name,
-        string pwd
-    )
+    public int WriteIniPwd(string section, string key, string v, string file_name, string pwd)
     {
         object[] args = new object[5];
         object result;
@@ -7375,13 +6067,7 @@ public class Dmsoft
         args[3] = file_name;
         args[4] = pwd;
 
-        result = obj.InvokeMember(
-            "WriteIniPwd",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteIniPwd", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7394,13 +6080,7 @@ public class Dmsoft
         args[2] = tpe;
         args[3] = v;
 
-        result = obj.InvokeMember(
-            "WriteInt",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteInt", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 
@@ -7432,13 +6112,7 @@ public class Dmsoft
         args[2] = tpe;
         args[3] = v;
 
-        result = obj.InvokeMember(
-            "WriteString",
-            BindingFlags.InvokeMethod,
-            null,
-            obj_object,
-            args
-        );
+        result = obj.InvokeMember("WriteString", BindingFlags.InvokeMethod, null, obj_object, args);
         return (int)result;
     }
 

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Mhxy.App.Helpers;
+namespace Mhxy.Core;
 
 public class Logger
 {

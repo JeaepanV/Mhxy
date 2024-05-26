@@ -1,4 +1,4 @@
-﻿namespace Mhxy.App.Common
+﻿namespace Mhxy.Core.Common
 {
     public class Region
     {

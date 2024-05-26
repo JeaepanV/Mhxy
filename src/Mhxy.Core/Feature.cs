@@ -1,7 +1,7 @@
-﻿using Mhxy.App.Common;
-using Mhxy.App.Common.Enums;
+﻿using Mhxy.Core.Common;
+using Mhxy.Core.Common.Enums;
 
-namespace Mhxy.App.Tasks;
+namespace Mhxy.Core;
 
 public class Feature
 {
@@ -13,12 +13,12 @@ public class Feature
     /// <summary>
     /// 检测模式
     /// </summary>
-    public DetectMode Mode { get; set; }
+    public ScanMode Mode { get; set; }
 
     /// <summary>
     /// 检测区域
     /// </summary>
-    public Region DetectRegion { get; set; } = new Region(0, 0, 2000, 2000);
+    public Region ScanRegion { get; set; } = new Region(0, 0, 2000, 2000);
 
     /// <summary>
     /// 图片名

@@ -121,7 +121,64 @@
   <data name="dm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dm.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="lvl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
   <data name="reg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reg.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="任务栏_捉鬼" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\任务栏_捉鬼.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="战斗_展开" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\战斗_展开.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="战斗_收缩" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\战斗_收缩.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_任务栏" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_任务栏.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_包裹" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_包裹.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_展开任务栏" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_展开任务栏.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_指引" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_指引.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_活动" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_活动.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_队伍" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_队伍.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="界面_队伍栏" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\界面_队伍栏.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_创建" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_创建.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_助战" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_助战.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_匹配" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_匹配.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_喊话" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_喊话.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_捉鬼" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_捉鬼.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_暂离" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_暂离.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_离线" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_离线.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="队伍_请离" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\队伍_请离.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

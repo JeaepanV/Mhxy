@@ -71,11 +71,215 @@ namespace Mhxy.App.Properties {
         }
         
         /// <summary>
+        ///   查找类似 3FEC0200400800E007F8$0$0.0.40$16
+        ///200C03FF8$1$0.0.19$16
+        ///78180200C068198E1F00$2$0.0.36$15
+        ///78180200C028198E1F00$2$0.0.35$15
+        ///701802044088318D1F38$3$0.0.39$16
+        ///701802044088318D1F18$3$0.0.38$16
+        ///00201C0E871383E07FF801$4$0.0.44$15
+        ///00201C0E871303E07FF801$4$0.0.43$15
+        ///FF986208410821062078$5$0.0.41$16
+        ///FF986208410821062078$5$0.0.40$16
+        ///3FEC6208410821861878$6$0.0.43$16
+        ///80100200C1F8E1E03000$7$0.0.25$16
+        ///80100200C1F8C1E03000$7$0.0.24$16
+        ///787CF20C4088318F1F18$8$0.0.49$16
+        ///787CF20C4088318F0E18$8$0.0.47$16
+        ///787CF20C4 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string lvl {
+            get {
+                return ResourceManager.GetString("lvl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
         public static byte[] reg {
             get {
                 object obj = ResourceManager.GetObject("reg", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 任务栏_捉鬼 {
+            get {
+                object obj = ResourceManager.GetObject("任务栏_捉鬼", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 战斗_展开 {
+            get {
+                object obj = ResourceManager.GetObject("战斗_展开", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 战斗_收缩 {
+            get {
+                object obj = ResourceManager.GetObject("战斗_收缩", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_任务栏 {
+            get {
+                object obj = ResourceManager.GetObject("界面_任务栏", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_包裹 {
+            get {
+                object obj = ResourceManager.GetObject("界面_包裹", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_展开任务栏 {
+            get {
+                object obj = ResourceManager.GetObject("界面_展开任务栏", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_指引 {
+            get {
+                object obj = ResourceManager.GetObject("界面_指引", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_活动 {
+            get {
+                object obj = ResourceManager.GetObject("界面_活动", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_队伍 {
+            get {
+                object obj = ResourceManager.GetObject("界面_队伍", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 界面_队伍栏 {
+            get {
+                object obj = ResourceManager.GetObject("界面_队伍栏", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_创建 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_创建", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_助战 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_助战", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_匹配 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_匹配", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_喊话 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_喊话", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_捉鬼 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_捉鬼", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_暂离 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_暂离", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_离线 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_离线", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] 队伍_请离 {
+            get {
+                object obj = ResourceManager.GetObject("队伍_请离", resourceCulture);
                 return ((byte[])(obj));
             }
         }

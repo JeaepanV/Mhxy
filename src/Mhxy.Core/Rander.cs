@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mhxy.App;
+﻿namespace Mhxy.Core;
 
 public class Rander
 {
@@ -17,7 +11,7 @@ public class Rander
 
     public int Next(int max)
     {
-         return _random.Next(max);
+        return _random.Next(max);
     }
 
     public int Next(int min, int max)
@@ -25,9 +19,7 @@ public class Rander
         return _random.Next(min, max);
     }
 
-
     private static Rander _instance;
-
 
     public static Rander Instance
     {
@@ -39,8 +31,12 @@ public class Rander
             }
             return _instance;
         }
-        set { Instance = value; }
+        set
+        {
+            if (_instance == null)
+            {
+                _instance = value;
+            }
+        }
     }
-
-
 }

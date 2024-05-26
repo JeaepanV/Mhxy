@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Mhxy.App;
+namespace Mhxy.Core;
 
 /// <summary>
 /// 免注册调用大漠插件
