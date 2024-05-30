@@ -29,7 +29,7 @@ namespace Mhxy.App.ViewModels
         }
 
         private Dmsoft _dmsoft;
-        private ZhuoGuiTask _task;
+        private ShiMenTask _task;
         private Thread _thread;
 
         public MainWindowViewModel()
@@ -60,7 +60,7 @@ namespace Mhxy.App.ViewModels
                     RegButtonEnabled = false;
                     _dmsoft = new Dmsoft();
                     _dmsoft.Reg(DmsoftConfig.RegCode, DmsoftConfig.VerInfo);
-                    _task = new ZhuoGuiTask(_dmsoft);
+                    _task = new ShiMenTask(_dmsoft);
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace Mhxy.App.ViewModels
                     try
                     {
                         _dmsoft.BindWindowEx(
-                            526336,
+                            722972,
                             "dx.graphic.3d.10plus",
                             "dx.mouse.api",
                             "dx.keypad.api",
@@ -84,7 +84,8 @@ namespace Mhxy.App.ViewModels
                             0
                         );
                         var path = _dmsoft.GetBasePath();
-                        _dmsoft.SetPath(path);
+                        //_dmsoft.SetPath(path);
+                        _dmsoft.SetPath(DmsoftConfig.GlobalPath);
                         _dmsoft.SetDict(0, "lvl.txt");
                         _task.Start();
                     }

@@ -76,7 +76,7 @@ namespace Mhxy.App.Tasks
                 {
                     OnOther();
                 }
-                DelayLong();
+                DelayShort();
             }
         }
 
@@ -210,12 +210,16 @@ namespace Mhxy.App.Tasks
 
         protected bool SwitchTaskbar()
         {
+            // 检测主界面
             if (IsMainView())
             {
+                // 展开任务栏
                 ExpandTaskbar();
                 DelayLong();
+                // 检测是否任务栏
                 if (!IsTaskbar())
                 {
+                    // 点击任务栏
                     ClickRegion(FeatureLibrary.Instance.Dict["界面_任务栏"].ScanRegion);
                     return true;
                 }
@@ -270,13 +274,43 @@ namespace Mhxy.App.Tasks
 
         #region ========================    必备
 
-        public virtual bool ClickTask()
+        protected bool Buy()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_药店"])
+                || Bulid(FeatureLibrary.Instance.Dict["界面_兵器铺"])
+                || Bulid(FeatureLibrary.Instance.Dict["界面_宠物店"])
+                || Bulid(FeatureLibrary.Instance.Dict["界面_商会"])
+                || Bulid(FeatureLibrary.Instance.Dict["界面_摆摊"]);
+        }
+
+        protected bool Use()
+        {
+            return Bulid(FeatureLibrary.Instance.Dict["界面_使用"]);
+        }
+
+        protected bool Skip()
+        {
+            if (_dm.GetColorNum(440, 0, 599, 39, "14100E", 0.9) >= 6000)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    ClickRect(975, 5, 1014, 44);
+                    Delay(Rander.Instance.Next(min: 125, 250));
+                }
+                Skip();
+                return true;
+            }
+
+            return false;
+        }
+
+        protected virtual bool ClickTask()
         {
             Log($"点击{TaskName}任务");
             return false;
         }
 
-        public virtual bool ReceiveTask()
+        protected virtual bool ReceiveTask()
         {
             Log($"领取{TaskName}任务");
             return false;

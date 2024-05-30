@@ -132,17 +132,102 @@ namespace Mhxy.App.Tasks
                     Name = "界面_NPC交互",
                     Mode = ScanMode.FindColorBlock,
                     DeltaColor = "EFD1A0-061022",
-                    ScanRegion = new Region(798, 98, 987, 587),
+                    ScanRegion = new Region(740, 98, 970, 587),
                     Clicked = true,
                     WaitTime = Rander.Instance.Next(1000, 2000),
-                    ClickRegion = new Region { Height = 40, Width = 160 },
-                    ColorCount = 4800,
-                    BlockWidth = 170,
+                    ClickRegion = new Region { Height = 35, Width = 200 },
+                    ColorCount = 6400,
+                    BlockWidth = 220,
                     BlockHeight = 40,
                 }
             );
 
+            _dictionary.Add(
+                "界面_药店",
+                new Feature
+                {
+                    Name = "界面_药店",
+                    Mode = ScanMode.FindPic,
+                    PicName = "界面_药店",
+                    ScanRegion = new(474, 78, 545, 113),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new(757, 562, 856, 605)
+                }
+            );
+
+            _dictionary.Add(
+                "界面_兵器铺",
+                new Feature
+                {
+                    Name = "界面_兵器铺",
+                    Mode = ScanMode.FindPic,
+                    PicName = "界面_兵器铺",
+                    ScanRegion = new(462, 80, 558, 113),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new(757, 561, 859, 605)
+                }
+            );
+
+            _dictionary.Add(
+                "界面_宠物店",
+                new Feature
+                {
+                    Name = "界面_宠物店",
+                    Mode = ScanMode.FindPic,
+                    PicName = "界面_宠物店",
+                    ScanRegion = new(446, 77, 592, 114),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new(806, 615, 920, 661)
+                }
+            );
+
+            _dictionary.Add(
+                "界面_商会",
+                new Feature
+                {
+                    Name = "界面_商会",
+                    Mode = ScanMode.FindPic,
+                    PicName = "界面_商会",
+                    ScanRegion = new(464, 79, 540, 123),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new(794, 623, 905, 664)
+                }
+            );
+
+            _dictionary.Add(
+                "界面_使用",
+                new Feature
+                {
+                    Name = "界面_使用",
+                    Mode = ScanMode.FindPic,
+                    PicName = "界面_使用",
+                    ScanRegion = new(825, 622, 891, 657),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new(825, 622, 891, 657)
+                }
+            );
+
+            _dictionary.Add(
+                "界面_摆摊",
+                new Feature
+                {
+                    Name = "界面_摆摊",
+                    Mode = ScanMode.FindPic,
+                    PicName = "界面_摆摊",
+                    ScanRegion = new(461, 75, 542, 127),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new(794, 623, 905, 664)
+                }
+            );
+
             InitTeam();
+            InitShiMen();
         }
 
         private void InitTeam()
@@ -243,6 +328,72 @@ namespace Mhxy.App.Tasks
                     Mode = ScanMode.FindPicEx,
                     PicName = "队伍_助战",
                     ScanRegion = new Region(241, 201, 927, 242)
+                }
+            );
+        }
+
+        private void InitShiMen()
+        {
+            _dictionary.Add(
+                "师门_去完成",
+                new Feature
+                {
+                    Name = "师门_去完成",
+                    Mode = ScanMode.FindPic,
+                    PicName = "师门_去完成",
+                    ScanRegion = new(291, 420, 922, 485),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new Region { Width = 60, Height = 20 }
+                }
+            );
+            _dictionary.Add(
+                "师门_继续任务",
+                new Feature
+                {
+                    Name = "师门_继续任务",
+                    Mode = ScanMode.FindPic,
+                    PicName = "师门_继续任务",
+                    ScanRegion = new(291, 420, 922, 485),
+                    Clicked = true,
+                    WaitTime = Rander.Instance.Next(1000, 2000),
+                    ClickRegion = new Region { Width = 80, Height = 20 }
+                }
+            );
+            _dictionary.Add(
+                "任务栏_师门",
+                new Feature
+                {
+                    Name = "任务栏_师门",
+                    Mode = ScanMode.FindPic,
+                    PicName = "任务栏_师门",
+                    ScanRegion = new Region(802, 156, 1021, 515),
+                    Clicked = true,
+                    ClickRegion = new Region { Width = 30, Height = 30 }
+                }
+            );
+            _dictionary.Add(
+                "师门_上交物品",
+                new Feature
+                {
+                    Name = "师门_上交物品",
+                    Mode = ScanMode.FindPic,
+                    PicName = "师门_上交物品",
+                    ScanRegion = new Region(789, 565, 868, 613),
+                    Clicked = true,
+                    ClickRegion = new Region { Width = 30, Height = 30 }
+                }
+            );
+            _dictionary.Add(
+                "师门_完成",
+                new Feature
+                {
+                    Name = "师门_完成",
+                    Mode = ScanMode.FindPic,
+                    PicName = "师门_完成",
+                    ScanRegion = new Region(466, 564, 558, 603),
+                    Clicked = true,
+                    ClickRegion = new Region(466, 564, 558, 603)
                 }
             );
         }
